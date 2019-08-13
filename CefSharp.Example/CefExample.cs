@@ -63,19 +63,18 @@ namespace CefSharp.Example
             settings.CachePath = "cache";
             //settings.UserAgent = "CefSharp Browser" + Cef.CefSharpVersion; // Example User Agent
             //settings.CefCommandLineArgs.Add("renderer-process-limit", "1");
-            //settings.CefCommandLineArgs.Add("renderer-startup-dialog", "1");
-            //settings.CefCommandLineArgs.Add("enable-media-stream", "1"); //Enable WebRTC
-            //settings.CefCommandLineArgs.Add("no-proxy-server", "1"); //Don't use a proxy server, always make direct connections. Overrides any other proxy server flags that are passed.
-            //settings.CefCommandLineArgs.Add("debug-plugin-loading", "1"); //Dumps extra logging about plugin loading to the log file.
-            //settings.CefCommandLineArgs.Add("disable-plugins-discovery", "1"); //Disable discovering third-party plugins. Effectively loading only ones shipped with the browser plus third-party ones as specified by --extra-plugin-dir and --load-plugin switches
-            //settings.CefCommandLineArgs.Add("enable-system-flash", "1"); //Automatically discovered and load a system-wide installation of Pepper Flash.
-            //settings.CefCommandLineArgs.Add("allow-running-insecure-content", "1"); //By default, an https page cannot run JavaScript, CSS or plugins from http URLs. This provides an override to get the old insecure behavior. Only available in 47 and above.
-
-            //settings.CefCommandLineArgs.Add("enable-logging", "1"); //Enable Logging for the Renderer process (will open with a cmd prompt and output debug messages - use in conjunction with setting LogSeverity = LogSeverity.Verbose;)
+            //settings.CefCommandLineArgs.Add("renderer-startup-dialog", string.Empty);
+           //settings.CefCommandLineArgs.Add("enable-media-stream", string.Empty); //Enable WebRTC
+            //settings.CefCommandLineArgs.Add("no-proxy-server", string.Empty); //Don't use a proxy server, always make direct connections. Overrides any other proxy server flags that are passed.
+           //settings.CefCommandLineArgs.Add("debug-plugin-loading", "1"); //Dumps extra logging about plugin loading to the log fi
+           //settings.CefCommandLineArgs.Add("disable-plugins-discovery", string.Empty); //Disable discovering third-party plugins. Effectively loading only ones shipped with the browser plus third-party ones as specified by --extra-plugin-dir and --load-plugin switches
+           //settings.CefCommandLineArgs.Add("enable-system-flash", string.Empty); //Automatically discovered and load a system-wide installation of Pepper Flash.
+            //settings.CefCommandLineArgs.Add("allow-running-insecure-content", string.Empty); //By default, an https page cannot run JavaScript, CSS or plugins from http URLs. This provides an override to get the old insecure behavior. Only available in 47 and above.
+            //settings.CefCommandLineArgs.Add("enable-logging", string.Empty); //Enable Logging for the Renderer process (will open with a cmd prompt and output debug messages - use in conjunction with setting LogSeverity = LogSeverity.Verbose;)
             //settings.LogSeverity = LogSeverity.Verbose; // Needed for enable-logging to output messages
 
-            //settings.CefCommandLineArgs.Add("disable-extensions", "1"); //Extension support can be disabled
-            //settings.CefCommandLineArgs.Add("disable-pdf-extension", "1"); //The PDF extension specifically can be disabled
+            //settings.CefCommandLineArgs.Add("disable-extensions", string.Empty); //Extension support can be disabled
+            //settings.CefCommandLineArgs.Add("disable-pdf-extension", string.Empty); //The PDF extension specifically can be disabled
 
             //Load the pepper flash player that comes with Google Chrome - may be possible to load these values from the registry and query the dll for it's version info (Step 2 not strictly required it seems)
             //settings.CefCommandLineArgs.Add("ppapi-flash-path", @"C:\Program Files (x86)\Google\Chrome\Application\47.0.2526.106\PepperFlash\pepflashplayer.dll"); //Load a specific pepper flash version (Step 1 of 2)
@@ -92,18 +91,18 @@ namespace CefSharp.Example
 
             //NOTE: The following function will set all three params
             //settings.SetOffScreenRenderingBestPerformanceArgs();
-            //settings.CefCommandLineArgs.Add("disable-gpu", "1");
-            //settings.CefCommandLineArgs.Add("disable-gpu-compositing", "1");
-            //settings.CefCommandLineArgs.Add("enable-begin-frame-scheduling", "1");
+            //settings.CefCommandLineArgs.Add("disable-gpu", string.Empty);
+            //settings.CefCommandLineArgs.Add("disable-gpu-compositing", string.Empty);
+			//settings.CefCommandLineArgs.Add("enable-begin-frame-scheduling", string.Empty);
 
-            //settings.CefCommandLineArgs.Add("disable-gpu-vsync", "1"); //Disable Vsync
+            //settings.CefCommandLineArgs.Add("disable-gpu-vsync", string.Empty); //Disable Vsync
 
             // The following options control accessibility state for all frames.
             // These options only take effect if accessibility state is not set by IBrowserHost.SetAccessibilityState call.
             // --force-renderer-accessibility enables browser accessibility.
             // --disable-renderer-accessibility completely disables browser accessibility.
-            //settings.CefCommandLineArgs.Add("force-renderer-accessibility", "1");
-            //settings.CefCommandLineArgs.Add("disable-renderer-accessibility", "1");
+            //settings.CefCommandLineArgs.Add("force-renderer-accessibility", string.Empty);
+            //settings.CefCommandLineArgs.Add("disable-renderer-accessibility", string.Empty);
 
             //Disable Network Service in WPF
             //settings.CefCommandLineArgs.Add("disable-features", "NetworkService,VizDisplayCompositor");
@@ -123,6 +122,7 @@ namespace CefSharp.Example
                 // DevTools doesn't seem to be working when this is enabled
                 // http://magpcss.org/ceforum/viewtopic.php?f=6&t=14095
                 //settings.CefCommandLineArgs.Add("enable-begin-frame-scheduling", "1");
+                //settings.CefCommandLineArgs.Add("disable-direct-composition", string.Empty);
             }
 
             var proxy = ProxyConfig.GetProxyInformation();
@@ -131,7 +131,7 @@ namespace CefSharp.Example
                 case InternetOpenType.Direct:
                 {
                     //Don't use a proxy server, always make direct connections.
-                    settings.CefCommandLineArgs.Add("no-proxy-server", "1");
+                    settings.CefCommandLineArgs.Add("no-proxy-server", string.Empty);
                     break;
                 }
                 case InternetOpenType.Proxy:
@@ -141,7 +141,7 @@ namespace CefSharp.Example
                 }
                 case InternetOpenType.PreConfig:
                 {
-                    settings.CefCommandLineArgs.Add("proxy-auto-detect", "1");
+                    settings.CefCommandLineArgs.Add("proxy-auto-detect", string.Empty);
                     break;
                 }
             }
